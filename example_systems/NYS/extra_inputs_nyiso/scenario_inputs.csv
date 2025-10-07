@@ -1,0 +1,3 @@
+﻿case_id,year,growth,tx_expansion,ng_price,ccs_capex,renewable_capex,nuclear_capex,conv_hydro_rps_eligible,ca_nuclear_allowed,electrification
+p1,2030,normal,high,reference,mid,mid,mid,no,no,high_electrification
+p4,2030,normal,high,reference,mid,low,mid,no,no,high_electrification
