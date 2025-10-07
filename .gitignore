@@ -139,3 +139,4 @@ data/transformed_data/*
 /data/resource_groups/*
 /data/cache/*
 cluster_assignments*
+/data/PowerGenome_data_repository
