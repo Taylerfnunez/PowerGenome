@@ -1,0 +1,73 @@
+#Import relevant packages
+import sqlite3
+import pandas as pd
+
+#Change file path to the sql data table you want to explore
+db_path = "/Users/tedwhite15/Documents/Taylers_Files/Research/Projects/Land-use/AVLU_project/GenX/PowerGenome/data/PowerGenome_data_repository/pg_misc_tables_efs_2023.2.sqlite/pg_misc_tables_efs_2023.2.sqlite"
+conn = sqlite3.connect(db_path)
+
+#This prints all of the tables inside this files 
+tables = conn.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall()
+
+# Print table names
+print("Tables in database:")
+for table in tables:
+    print(table[0])
+
+
+# List columns in technology_costs_nrelatb
+columns = pd.read_sql("PRAGMA table_info(technology_costs_nrelatb);", conn)
+print(columns)
+
+# Preview data
+df = pd.read_sql("SELECT * FROM technology_costs_nrelatb LIMIT 10;", conn)
+print(df)
+
+# Look at the table technology_costs_nrelatb and limit to rows ghat correspond to atb_year = 2023
+
+pd.read_sql("""
+SELECT DISTINCT technology, tech_detail, basis_year
+FROM technology_costs_nrelatb
+WHERE atb_year = 2023
+ORDER BY technology, tech_detail, basis_year
+""", conn)
+
+
+#For basis_year = 2040, check if there are any missing entries for costs
+
+missing_costs = pd.read_sql("""
+SELECT technology, tech_detail, parameter, basis_year, parameter_value
+FROM technology_costs_nrelatb
+WHERE technology = 'Nuclear' 
+  AND basis_year = 2040
+  AND parameter IN ('fixed_o_m_mw', 'variable_o_m_mwh', 'capex_mw')
+ORDER BY tech_detail, parameter
+""", conn)
+
+missing_costs[missing_costs['parameter_value'].isna()]
+
+
+
+# List of parameters PowerGenome generally needs for new generators
+required_params = [
+    "capex_mw",        # capital cost per MW
+    "fixed_o_m_mw",    # fixed O&M per MW
+    "variable_o_m_mwh" # variable O&M per MWh
+]
+
+# Query Nuclear costs for 2040
+query = f"""
+SELECT tech_detail, parameter, parameter_value
+FROM technology_costs_nrelatb
+WHERE technology = 'Nuclear'
+  AND basis_year = 2040
+  AND parameter IN ({','.join(['?']*len(required_params))})
+ORDER BY tech_detail, parameter
+"""
+
+df = pd.read_sql(query, conn, params=required_params)
+
+# Pivot to see which parameters exist for each tech_detail
+pivot = df.pivot_table(index='tech_detail', columns='parameter', values='parameter_value', aggfunc='first')
+
+print(pivot)
