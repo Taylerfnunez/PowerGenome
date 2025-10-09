@@ -30,7 +30,7 @@ target_usd_year: 2022
 # profiles, etc
 # - "model_first_planning_year": The first year of each planning period. Capex for
 # new-build generators from ATB are an average of costs from first to last (inclusive).
-model_year: [2030]
+model_year: [2040]
 model_first_planning_year: [2023]
 
 # HOURS OFFSET FROM UTC
