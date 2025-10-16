@@ -124,7 +124,7 @@ data/transformed_data/*
 *.pdf
 
 # Ignore notebooks, but not examples
-*.ipynb
+#*.ipynb
 .DS_Store
 !/notebooks/*
 
