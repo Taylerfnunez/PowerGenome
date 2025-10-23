@@ -129,8 +129,8 @@ data/transformed_data/*
 !/notebooks/*
 
 # Results files
-/results
-/example_system/test_system
+#/results
+#/example_system/test_system
 
 # Data files
 /data/eia/*
