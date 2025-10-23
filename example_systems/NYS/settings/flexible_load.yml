@@ -50,7 +50,7 @@ flexible_demand_resources:
         Max_Flexible_Demand_Delay: 2
         FLEX: 1
         Flexible_Demand_Energy_Eff: 1
-    2040: #TFN added the following section (2040) on 10/8/25
+  2040: #TFN added the following section (2040) on 10/8/25
     trans_light_duty:
       fraction_shiftable: 0.8
       parameter_values:
