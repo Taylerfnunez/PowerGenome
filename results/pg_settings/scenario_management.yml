@@ -77,7 +77,7 @@ settings_management:
     renewable_capex:
       mid:
         atb_new_gen:
-          - [NaturalGas, CCCCSAvgCF, Moderate, 500]
+          - [NaturalGas, CCCCSAvgCF, Moderate, 500] #technology, tech detail, cost case, cost of each unit (i.e. name plate capacity)
           - [NaturalGas, CCAvgCF, Moderate, 500]
           - [NaturalGas, CTAvgCF, Moderate, 100]
           - [LandbasedWind, Class1, Moderate, 1]
