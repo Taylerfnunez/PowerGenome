@@ -11,7 +11,7 @@
 # parameter from this settings file with a value that should be modified for a specific
 # case.
 settings_management:
-  2040:
+  2030:
     ccs_disposal_cost:
       yes:
         ccs_disposal_cost: -27 #copiedfromPJM
