@@ -1,7 +1,4 @@
 ﻿case_id,case_description
-s1,No Policy
-s4,High RE + 1 GW nuclear + Emissions cap
-s5,High RE + 1 GW nuclear 
-s6,High RE + Emissions cap
-s7,High RE 
-s8,Low RE  + 1GW nuclear + Emissions cap
+s1,No Policy + Mid RE
+s2,70% RE + Mid RE + Emmissions 
+s3,High RE + 1 GW nuclear 
